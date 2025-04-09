@@ -33,19 +33,28 @@ export async function POST(request: Request) {
       { status: 200 }
     );
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in /api/send-otp:', error);
 
-    // Optional: If error is from email sending, you could add specific handling
-    if (error.message?.includes('send OTP email')) {
+    // Narrowing the error type to an object with a message
+    if (error instanceof Error) {
+      // Optional: If error is from email sending, you could add specific handling
+      if (error.message?.includes('send OTP email')) {
+        return NextResponse.json(
+          { error: 'Failed to send OTP email' },
+          { status: 500 }
+        );
+      }
+
       return NextResponse.json(
-        { error: 'Failed to send OTP email' },
+        { error: 'Internal Server Error', message: error.message },
         { status: 500 }
       );
     }
 
+    // If the error is not an instance of Error, return a generic response
     return NextResponse.json(
-      { error: 'Internal Server Error', message: error?.message },
+      { error: 'Internal Server Error' },
       { status: 500 }
     );
   }
