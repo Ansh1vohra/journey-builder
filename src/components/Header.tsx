@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
-import { Menu } from "lucide-react";
+// import { Menu } from "lucide-react";
 
 export default function Header() {
   const router = useRouter();

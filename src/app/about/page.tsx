@@ -29,7 +29,7 @@ export default function AboutPage() {
 
           <h2 className="text-2xl font-bold text-gray-900 mt-12">Our Mission</h2>
           <p>
-            We're on a mission to eliminate the stress and hours of research typically required for trip planning.
+            We are on a mission to eliminate the stress and hours of research typically required for trip planning.
             By combining artificial intelligence with travel expertise, we deliver optimized itineraries that help
             you discover the best experiences while maximizing your valuable travel time.
           </p>
